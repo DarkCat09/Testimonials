@@ -26,24 +26,25 @@ namespace Booking3
         {
             List<string> list = new List<string>();
 
+            MySqlCommand cmd = null;
+            DbDataReader reader = null;
+
             try
             {
-                MySqlCommand cmd = new MySqlCommand(cmdText, CONN);
+                cmd = new MySqlCommand(cmdText, CONN);
 
-                DbDataReader reader = cmd.ExecuteReader();
+                reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     for (int i = 0; i < reader.FieldCount; i++)
                         list.Add(reader.GetValue(i).ToString());
                 }
-
-                reader.Close();
             }
             catch (Exception ex)
             {
                 if (!File.Exists(Path.GetTempPath() + "/booking.txt"))
-                    File.Create(Path.GetTempPath() + "/booking.txt");
+                    File.Create(Path.GetTempPath() + "/booking.txt").Close();
 
                 File.AppendAllText(Path.GetTempPath() + "/booking.txt",
                     "Ошибка" + Environment.NewLine +
@@ -51,6 +52,13 @@ namespace Booking3
                     cmdText + Environment.NewLine + 
                     ex.Message + " " + cmdText + Environment.NewLine + Environment.NewLine);
                 MessageBox.Show("Ошибка");
+            }
+            finally
+            {
+                if (reader != null)
+                    reader.Close();
+                if (cmd != null)
+                    cmd.Dispose();
             }
 
             return list;
@@ -70,7 +78,7 @@ namespace Booking3
             catch (Exception ex)
             {
                 if (!File.Exists(Path.GetTempPath() + "/booking.txt"))
-                    File.Create(Path.GetTempPath() + "/booking.txt");
+                    File.Create(Path.GetTempPath() + "/booking.txt").Close();
 
                 File.AppendAllText(Path.GetTempPath() + "/booking.txt",
                     "Ошибка" + Environment.NewLine +

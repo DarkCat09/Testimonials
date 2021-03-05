@@ -46,6 +46,7 @@
             this.OpinionPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.HotelsPanel.SuspendLayout();
@@ -187,6 +188,7 @@
             // 
             // InfoPanel
             // 
+            this.InfoPanel.Controls.Add(this.button2);
             this.InfoPanel.Controls.Add(this.textBox2);
             this.InfoPanel.Controls.Add(this.button1);
             this.InfoPanel.Controls.Add(this.OpinionPanel);
@@ -233,6 +235,16 @@
             this.textBox3.Size = new System.Drawing.Size(402, 72);
             this.textBox3.TabIndex = 8;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(564, 93);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 24);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Отзывы";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // HotelUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -276,5 +288,6 @@
         private System.Windows.Forms.Panel OpinionPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button2;
     }
 }

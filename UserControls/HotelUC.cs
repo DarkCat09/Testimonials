@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Booking3.UserControls
@@ -108,16 +103,6 @@ namespace Booking3.UserControls
             Admin.AdminDesignForm.ApplyMenu(this);
         }
 
-        private void HotelForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox7_Click(object sender, EventArgs e)
         {
             PictureBox pb = (PictureBox)sender;
@@ -138,6 +123,10 @@ namespace Booking3.UserControls
 
         private void OpinionCLick(object sender, EventArgs e)
         {
+            SQLClass.Update(
+                $"INSERT INTO rating (User,Hotel_ID,Rate,Comment) VALUES " +
+                $"('{MainForm.Login}',{id},{numericUpDown1.Value},'{textBox1.Text.Trim()}')"
+            );
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -146,7 +135,8 @@ namespace Booking3.UserControls
                 "UPDATE  " + SQLClass.HOTELS +
                 " SET name = '" + textBox2.Text + "', " +
                 " description = '" + textBox3.Text + "'" +
-                " WHERE id = '" + id + "'");
+                " WHERE id = '" + id + "'"
+            );
         }
 
         private void textBox4_KeyDown(object sender, KeyEventArgs e)
@@ -160,6 +150,13 @@ namespace Booking3.UserControls
                     " SET quantity = '" + tb.Text.Replace("штук", "") + "'" +
                     " WHERE id = '" + tb.Tag.ToString() + "'");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ViewComments vcf = new ViewComments(id);
+            vcf.ShowDialog();
+            vcf.Dispose();
         }
     }
 }

@@ -138,6 +138,12 @@
     <Compile Include="UserControls\RoomUC.Designer.cs">
       <DependentUpon>RoomUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewComments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewComments.Designer.cs">
+      <DependentUpon>ViewComments.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AccountForm.resx">
       <DependentUpon>AccountForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RoomUC.resx">
       <DependentUpon>RoomUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewComments.resx">
+      <DependentUpon>ViewComments.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
